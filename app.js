@@ -97,7 +97,7 @@ function removeTask(e) {
   }
 }
 
-//Remove function from LS
+//Remove from LS
 function removeTaskFromLocalStorage(taskItem) {
   let tasks;
   if (localStorage.getItem('tasks') === null) {
