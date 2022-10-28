@@ -9,6 +9,8 @@ loadEventListener();
 
 function loadEventListener() {
   form.addEventListener('submit', addTask);
+  taskList.addEventListener('click', removeTask);
+  clearBtn.addEventListener('click', clearTasks);
 }
 
 function addTask(e) {
@@ -25,7 +27,7 @@ function addTask(e) {
 
   //Add new element, icon html and append the link to li
   const link = document.createElement('a');
-  link.classNme = 'delete-item secondary-content';
+  link.className = 'delete-item secondary-content';
   link.innerHTML = '<i class="fa fa-remove"></i>';
   li.appendChild(link);
 
@@ -34,4 +36,21 @@ function addTask(e) {
   taskInput.value = '';
 
   e.preventDefault();
+}
+
+//Remove tasks
+function removeTask(e) {
+  if (e.target.parentElement.classList.contains('delete-item')) {
+    if (confirm('Are you sure?')) {
+      e.target.parentElement.parentElement.remove();
+    }
+  }
+}
+
+//Clear tasks
+function clearTasks() {
+  //taskList.innerHTML = '';
+  while (taskList.firstChild) {
+    taskList.removeChild(taskList.firstChild);
+  }
 }
